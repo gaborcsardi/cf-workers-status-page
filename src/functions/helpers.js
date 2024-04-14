@@ -64,30 +64,31 @@ export async function notifySlack(monitor, operational) {
 }
 
 export async function notifyEmail(monitor, operational) {
-  const payload = {
-    personalizations: [
-      {
-        to: [{ email: SECRET_EMAIL_ADDRESS, name: 'R-hub admin' }],
-      },
-    ],
-    from: {
-      email: SECRET_EMAIL_ADDRESS,
-      name: 'R-hub status monitor',
-    },
-    subject: 'R-hub status alert',
-    content: [
-      {
-        type: 'text/plain',
-        value: `Monitor ${monitor.name} changed status to ${getOperationalLabel(operational)}`,
-      },
-    ],
-  };
-  console.log(JSON.stringify(payload))
-  const ret = await fetch('https://api.mailchannels.net/tx/v1/send', {
-    body: JSON.stringify(payload),
+  const req = new Request('https://api.mailchannels.net/tx/v1/send', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      personalizations: [
+        {
+          to: [{ email: 'csardi.gabor@gmail.com', name: 'Gabor Csardi' }],
+        },
+      ],
+      from: {
+        email: 'admin@r-hub.io',
+        name: 'R-hub admin',
+      },
+      subject: 'R-hub status alert',
+      content: [
+        {
+          type: 'text/plain',
+          value: `Monitor "${monitor.name}" changed status to "${getOperationalLabel(operational)}"`,
+        },
+      ],
+    }),
   })
+  const ret = await fetch(req);
   console.log("Result")
   console.log(JSON.stringify(ret))
 }
