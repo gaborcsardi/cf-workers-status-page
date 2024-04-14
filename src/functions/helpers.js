@@ -64,28 +64,6 @@ export async function notifySlack(monitor, operational) {
 }
 
 export async function notifyEmail(monitor, operational) {
-  // temporary, find out zone
-  const url = "https://httpbin.org/get";
-
-  async function gatherResponse(response) {
-    const { headers } = response;
-    const contentType = headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-      return JSON.stringify(await response.json());
-    }
-    return response.text();
-  }
-
-  const init = {
-    headers: {
-      "content-type": "application/json;charset=UTF-8",
-    },
-  };
-
-  const response = await fetch(url, init);
-  const results = await gatherResponse(response);
-  console.log(JSON.stringify(results))
-
   const req = new Request('https://api.mailchannels.net/tx/v1/send', {
     method: 'POST',
     headers: {
@@ -93,9 +71,9 @@ export async function notifyEmail(monitor, operational) {
       'accept': 'appliation/json'
     },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: 'csardi.gabor@gmail.com' }] }],
+      personalizations: [{ to: [{ email: SECRET_EMAIL_ADDRESS }] }],
       from: { email: 'admin@r-pkg.org' },
-      subject: 'R-hub status alert',
+      subject: 'r-pkg.org status alert',
       content: [
         {
           type: 'text/plain',
@@ -104,9 +82,7 @@ export async function notifyEmail(monitor, operational) {
       ]
     })
   })
-  const ret = await fetch(req);
-  console.log("Result")
-  console.log(JSON.stringify(ret))
+  return fetch(req);
 }
 
 export async function notifyTelegram(monitor, operational) {
