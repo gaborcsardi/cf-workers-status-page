@@ -34,13 +34,3 @@ monitors:
     name: CRAN download logs API
     url: 'https://cranlogs.r-pkg.org/downloads/daily/last-week/igraph'
     linkable: false
-
-  - id: test-failure
-    name: 'Testing email on failure'
-    url: https://cranlogs.r-pkg.org
-    linkable: false
-
-  - id: test-failure2
-    name: 'Testing email on failure #2'
-    url: https://cranlogs.r-pkg.org
-    linkable: false
