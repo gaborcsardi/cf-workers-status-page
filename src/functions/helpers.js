@@ -65,7 +65,7 @@ export async function notifySlack(monitor, operational) {
 
 export async function notifyEmail(monitor, operational) {
   // temporary, find out zone
-  const url = "postman-echo.com/";
+  const url = "https://httpbin.org/get";
 
   async function gatherResponse(response) {
     const { headers } = response;
