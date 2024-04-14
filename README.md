@@ -42,6 +42,9 @@ You can either deploy with **Cloudflare Deploy Button** using GitHub Actions or 
 
    - Name: SECRET_DISCORD_WEBHOOK_URL (optional)
    - Value: your-discord-webhook-url
+
+   - Name: SECRET_EMAIL_ADDRESS (optional)
+   - Value: yout-email-address
    ```
 
 3. Navigate to the **Actions** settings in your repository and enable them

@@ -7,6 +7,7 @@ import {
   getKVMonitors,
   setKVMonitors,
   notifyDiscord,
+  notifyEmail
 } from './helpers'
 
 function getDate() {
@@ -76,6 +77,14 @@ export async function processCronTrigger(event) {
       SECRET_SLACK_WEBHOOK_URL !== 'default-gh-action-secret'
     ) {
       event.waitUntil(notifySlack(monitor, monitorOperational))
+    }
+
+    if (
+      monitorStatusChanged &&
+      typeof SECRET_EMAIL_ADDRESS !== 'undefined' &&
+      SECRET_EMAIL_ADDRESS !== 'default-gh-action-secret'
+    ) {
+      event.waitUntil(notifyEmail(monitor, monitorOperational))
     }
 
     // Send Telegram message on monitor change

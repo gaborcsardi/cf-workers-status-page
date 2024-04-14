@@ -63,6 +63,32 @@ export async function notifySlack(monitor, operational) {
   })
 }
 
+export async function notifyEmail(monitor, operational) {
+  const payload = {
+    personalizations: [
+      {
+        to: [{ email: SECRET_EMAIL_ADDRESS, name: 'R-hub admin' }],
+      },
+    ],
+    from: {
+      email: SECRET_EMAIL_ADDRESS,
+      name: 'R-hub status monitor',
+    },
+    subject: 'R-hub status alert',
+    content: [
+      {
+        type: 'text/plain',
+        value: `Monitor ${monitor.name} changed status to ${getOperationalLabel(operational)}`,
+      },
+    ],
+  };
+  return fetch('https://api.mailchannels.net/tx/v1/send', {
+    body: JSON.stringify(payload),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  })
+}
+
 export async function notifyTelegram(monitor, operational) {
   const text = `Monitor *${monitor.name.replaceAll(
     '-',
