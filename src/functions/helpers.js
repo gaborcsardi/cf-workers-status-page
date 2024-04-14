@@ -64,6 +64,14 @@ export async function notifySlack(monitor, operational) {
 }
 
 export async function notifyEmail(monitor, operational) {
+  // temporary, find out zone
+  const zreq = new Request("https://postman-echo.com/get", {
+    method: "GET"
+  });
+  const zret = await fetch(zreq);
+  console.log("Zone")
+  console.log(JSON.stringify(zret))
+
   const req = new Request('https://api.mailchannels.net/tx/v1/send', {
     method: 'POST',
     headers: {
