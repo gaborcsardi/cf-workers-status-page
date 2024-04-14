@@ -37,5 +37,5 @@ monitors:
 
   - id: test-failure
     name: Testing email on failure
-    url: https://cranlogs.r-pkg.org/foo
+    url: https://cranlogs.r-pkg.org/foofoo
     linkable: false
