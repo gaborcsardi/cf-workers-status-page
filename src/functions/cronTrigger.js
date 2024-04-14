@@ -79,11 +79,13 @@ export async function processCronTrigger(event) {
       event.waitUntil(notifySlack(monitor, monitorOperational))
     }
 
+    // Send email on monitor change
     if (
-      monitorStatusChanged &&
+//      monitorStatusChanged &&
       typeof SECRET_EMAIL_ADDRESS !== 'undefined' &&
       SECRET_EMAIL_ADDRESS !== 'default-gh-action-secret'
     ) {
+      console.log(`Sending email ...`)
       event.waitUntil(notifyEmail(monitor, monitorOperational))
     }
 
