@@ -82,14 +82,14 @@ export async function notifyEmail(monitor, operational) {
       },
     ],
   };
-  console.log(payload)
+  console.log(JSON.stringify(payload))
   const ret = await fetch('https://api.mailchannels.net/tx/v1/send', {
     body: JSON.stringify(payload),
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   })
   console.log("Result")
-  console.log(ret)
+  console.log(JSON.stringify(ret))
 }
 
 export async function notifyTelegram(monitor, operational) {
