@@ -94,7 +94,7 @@ export async function notifyEmail(monitor, operational) {
     },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: 'csardi.gabor@gmail.com' }] }],
-      from: { email: 'admin@r-hub.io' },
+      from: { email: 'admin@r-pkg.org' },
       subject: 'R-hub status alert',
       content: [
         {
