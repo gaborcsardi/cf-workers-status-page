@@ -33,6 +33,13 @@ monitors:
     followRedirect: false # should fetch follow redirects, default=false
     linkable: true # allows the title to be a link, default=true
 
+  - id: www-r-pkg-org-badges
+    name: CRAN version badges
+    description: 'Badges with CRAN version numbers'
+    url: 'https://www.r-pkg.org/badges/version/cli'
+    linkurl: 'https://www.r-pkg.org/services#badges'
+    linkable: true
+
   - id: api-r-hub-io-rversions
     name: R versions API
     description: 'API to query current and past R versions.'
@@ -45,6 +52,13 @@ monitors:
     description: 'Database of CRAN package download counts.'
     url: 'https://cranlogs.r-pkg.org/downloads/daily/last-week/igraph'
     linkurl: 'https://cranlogs.r-pkg.org'
+    linkable: true
+
+  - id: cranlogs-r-pkg-org-badges
+    name: CRAN download badges
+    description: 'Badges with CRAN download counts.'
+    url: 'https://cranlogs.r-pkg.org/badges/last-day/cli'
+    linkurl: 'https://cranlogs.r-pkg.org/'
     linkable: true
 
   - id: evercran-r-pkg-org
