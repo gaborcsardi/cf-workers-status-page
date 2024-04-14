@@ -82,7 +82,12 @@ export async function notifyEmail(monitor, operational) {
       ]
     })
   })
-  return fetch(req);
+  return fetch(req).then(function(ret) {
+    if (!ret.ok) {
+      console.log(JSON.stringify(ret));
+      throw 'Failed to send email notification :('
+    }
+  });
 }
 
 export async function notifyTelegram(monitor, operational) {

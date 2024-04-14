@@ -85,7 +85,6 @@ export async function processCronTrigger(event) {
       typeof SECRET_EMAIL_ADDRESS !== 'undefined' &&
       SECRET_EMAIL_ADDRESS !== 'default-gh-action-secret'
     ) {
-      console.log(`Sending email ...`)
       event.waitUntil(notifyEmail(monitor, monitorOperational))
     }
 
