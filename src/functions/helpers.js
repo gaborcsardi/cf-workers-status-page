@@ -68,25 +68,19 @@ export async function notifyEmail(monitor, operational) {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
+      'accept': 'appliation/json'
     },
     body: JSON.stringify({
-      personalizations: [
-        {
-          to: [{ email: 'csardi.gabor@gmail.com', name: 'Gabor Csardi' }],
-        },
-      ],
-      from: {
-        email: 'admin@r-hub.io',
-        name: 'R-hub admin',
-      },
+      personalizations: [{ to: [{ email: 'csardi.gabor@gmail.com' }] }],
+      from: { email: 'admin@r-hub.io' },
       subject: 'R-hub status alert',
       content: [
         {
           type: 'text/plain',
           value: `Monitor "${monitor.name}" changed status to "${getOperationalLabel(operational)}"`,
-        },
-      ],
-    }),
+        }
+      ]
+    })
   })
   const ret = await fetch(req);
   console.log("Result")
