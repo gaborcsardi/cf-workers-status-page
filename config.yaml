@@ -55,8 +55,15 @@ monitors:
     linkurl: 'https://github.com/r-hub/evercran#readme'
     linkable: true
 
-  - id: crandb-r-pkg-rrg
+  - id: crandb-r-pkg-org
     name: CRANDB
     description: 'Database of CRAN packages'
     url: 'https://crandb.r-pkg.org/dplyr'
     linkurl: 'https://github.com/r-hub/crandb/tree/v2'
+
+  - id: search-r-pkg-org
+    name: CRAN package search
+    description: 'Search the DESCRIPTION files of CRAN packages'
+    url: 'https://search.r-pkg.org/_search?q=igraph'
+    linkurl: https://r-hub.github.io/pkgsearch/
+    lnkable: true
