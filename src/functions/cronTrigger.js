@@ -81,7 +81,7 @@ export async function processCronTrigger(event) {
 
     // Send email on monitor change
     if (
-      monitorStatusChanged &&
+//      monitorStatusChanged &&
       typeof SECRET_EMAIL_ADDRESS !== 'undefined' &&
       SECRET_EMAIL_ADDRESS !== 'default-gh-action-secret'
     ) {
