@@ -78,6 +78,6 @@ monitors:
   - id: search-r-pkg-org
     name: CRAN package search
     description: 'Search the DESCRIPTION files of CRAN packages'
-    url: 'http://search.r-pkg.org/_search?q=igraph'
+    url: 'http://search.r-pkg.org/package/_search?q=igraph'
     linkurl: https://r-hub.github.io/pkgsearch/
     lnkable: true
