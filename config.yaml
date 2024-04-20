@@ -64,7 +64,7 @@ monitors:
   - id: evercran-r-pkg-org
     name: Evercran
     description: 'Run historical R versions, with historical CRAN.'
-    url: 'https://evercran.r-pkg.org/2024/04/12/src/contrib/PACKAGES'
+    url: 'http://evercran.r-pkg.org/2024/04/12/src/contrib/PACKAGES'
     method: 'HEAD'
     linkurl: 'https://github.com/r-hub/evercran#readme'
     linkable: true
